@@ -1,4 +1,4 @@
-dCodesplitting:
+Codesplitting:
 
 "To be reworded:  
 In Next.js, code splitting is an automatic feature that helps optimize your application's performance by breaking the bundled JavaScript code into smaller chunks. These chunks are then loaded on-demand as the user navigates through the application, reducing the initial load time and improving the overall user experience. `next-i18next` fully supports code splitting, so translations are only loaded when needed, further enhancing performance. GIVE EXAMPLE. This could go in the optional section"
@@ -9,15 +9,15 @@ Production ready: `next-i18next` supports passing translations and configuration
 
 ## Introduction
 
-Hello! Since you’ve found your way to this blog, you are likely to want to learn about making your app or website available in at least 2 languages.
+Hello there! Having found your way to this blog, you probably want to know how to make your app or website multilingual.
 
 Specifically, you want to internationalize your web application and localize the translation to specific languages and or cultures.
 
-As a software engineer it's likely something you’ll need to learn as making your content available in more languages will make your content more accessible and allow you to grow your customer base and or increase reach.
+As a software engineer, it's likely something you’ll need to learn, as making your content available in more languages will make your content more accessible, allow you to grow your customer base, and or increase reach.
 
-In some geopolitical regions, there are laws requiring governments and companies to offer services in more than one language, and internationalizing your web application and localizing content is a must not choice.
+In some geopolitical regions, there are laws requiring governments and companies to offer services in more than one language, and internationalizing your web application and localizing content is a must, not a choice.
 
-This blog will walk you through step by step how to internationali**z**e and localize your static content using Next.js and next-i18next.
+This blog will walk you through step by step how to internationalize and localize your static content using Next.js and next-i18next.
 
 In case you didn't know, internationalizing has to do with making your web application able to support several languages while localization takes care of the actual language translation aspects.
 
@@ -37,7 +37,9 @@ If you've ever had the pleasure of building applications only using vanilla Reac
 
 \[Tailwind\]([https://tailwindcss.com/](https://tailwindcss.com/)) CSS is a very popular utility-first, customizable, responsive posts-CSS-based framework.
 
-\&gt;"Node.js is an open-source JavaScript runtime environment based on Chrome's V8 engine, enabling server-side scripting with a non-blocking I/O model, asynchronous programming, a rich ecosystem of modules through NPM, and an event-driven architecture for efficient handling of concurrent connections. " -- Courtesy of chatGPT! :)
+\&gt;"\[Node.js\]([https://nodejs.org/en](https://nodejs.org/en)) is an open-source JavaScript runtime environment based on Chrome's V8 engine, enabling server-side scripting with a non-blocking I/O model, asynchronous programming, a rich ecosystem of modules through NPM, and an event-driven architecture for efficient handling of concurrent connections. "
+
+\-- Courtesy of chatGPT! :)
 
 \[NPM\]([https://www.npmjs.com/](https://www.npmjs.com/)) is a javascript dependencies package manager tool primarily used with Node.js
 
@@ -47,13 +49,13 @@ And finally, \[Next-i18next\]([https://next.i18next.com/](https://next.i18next.c
 
 "...**internationalization framework**... ...written in and for JavaScript. ..."
 
-While react-i18next provides support for the i18n standard for react apps but stand-alone would require more configuration.
+While react-i18next provides support for the i18n standard for react apps, it requires more configuration.
 
 ## Project Setup
 
 First, we will need to create a Next.js application.
 
-In your chosen terminal type and then press enter:
+In your chosen terminal type the following and then press enter:
 
 ```plaintext
 npx create-next-app@latest next-i18next
@@ -61,7 +63,7 @@ npx create-next-app@latest next-i18next
 
 \[NPX\]([https://docs.npmjs.com/cli/v8/commands/npx](https://docs.npmjs.com/cli/v8/commands/npx)) is a package runner that comes with NPM that allows you to run packages without installing them globally.
 
-(Create-next-app)\[[https://nextjs.org/docs/pages/api-reference/create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app)\] is a package utility to set up a Next.js app and the @latest flag indicates installs the most up-to-date version.
+\[Create-next-app\]\[[https://nextjs.org/docs/pages/api-reference/create-next-app](https://nextjs.org/docs/pages/api-reference/create-next-app)\] is a package utility to set up a Next.js app and the @latest flag selects to installs the most up-to-date version.
 
 Next.js supports many of the tools we will be using out of the box and configured for you.
 
@@ -76,10 +78,9 @@ next-i18next
 √ Would you like to use App Router? (recommended) ... No / Yes
 √ Would you like to customize the default import alias? ... No / Yes
 √ What import alias would you like configured? ... @/*
-Creating a n
 ```
 
-To follow along with this tutorial choose yes for typescript, tailwind CSS, no for src(we'll cover how to setup SRC directory once basic setups are covered) directory and the App Router, and click on yes for the default import alias(Choose the default "@/\*" import alias).
+To follow along with this tutorial choose yes for typescript, tailwind CSS, no for src directory (we'll cover how to set the SRC directory once basic setups are covered), and the App Router, and click on yes for the default import alias(Choose the default "@/\*" import alias).
 
 We will also need to install the following package:
 
@@ -89,11 +90,11 @@ npm i next-i18next
 
 Next-i18next is a library that simplifies internationalization (i18n) in Next.js applications. It provides tools and utilities to manage translations, language switching, and localization in your Next.js projects.
 
-Now we are ready to internationalize the application.
+Now we are ready to internationalize & localize the application.
 
-### Namespaces, nesting & sub-directories...
+### Namespaces, loading namespaces, nesting & sub-directories...
 
-Let's organize our translation content with simple French and English namespaces, which also demonstrate nesting and sub-directories to understand the organization's capacities in the context of a larger application.
+Let's organize our translation content with simple French and English namespaces, which will also be used to demonstrate loading, nesting, and sub-directories to understand the organization's capacities in the context of a larger application.
 
 ```plaintext
 public/
@@ -108,9 +109,9 @@ public/
 |   |       |-- other.json
 ```
 
-Your respective en and fr directories common.json file will contain:
+Your respective "en" and "fr" directories common.json file will contain:
 
-```javascript
+```json
 {
     "helloworld": "Hello World!",
     "footer":{
@@ -120,7 +121,7 @@ Your respective en and fr directories common.json file will contain:
   }
 ```
 
-```javascript
+```json
 {
     "helloworld": "Salut monde!",
     "footer":{
@@ -132,7 +133,7 @@ Your respective en and fr directories common.json file will contain:
 
 And your respective other.json translation files:
 
-```javascript
+```json
 {
     "nesteddirectory": "Nested Directory"
   }
@@ -157,7 +158,7 @@ module.exports = {
   };
 ```
 
-Our configuration file is specifying the default locale language and which locale languages are available in this application. We are exporting this i18n configured object so that it is available to our next.config.js file.
+Our configuration file specifies the default locale language and which locale languages are available in this application. We are exporting this i18n configured object so that it is available to our next.config.js file.
 
 The i18n configuration object is provided by the next-i18next package.
 
@@ -174,9 +175,9 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-We are importing the configured i18n object to enable localized URL routing.
+We are importing the configured i18n object for internationalization settings, which can be used to support localized content.
 
-Next.js links your locales(ie: JSON translation files) with internationalized routing in sync out of the box, however, it doesn't assist in the actual translation of the content or establish the framework for supporting internationalizing your web application.
+Next.js links your locales(i.e.: JSON translation files) with internationalized routing in sync out of the box, however, it doesn't assist in the actual translation of the content or establish the framework for supporting internationalizing your web application.
 
 Some important functions provided by next-i18next are:
 
@@ -190,7 +191,7 @@ Some important functions provided by next-i18next are:
 
 The `useTranslation` hook and `withTranslation` HOC is used within your components. `withTranslation` is used with class components while `useTranslation` is used with functional components. Since newer versions of React implementation tend to favor functional programming we will use `useTranslation`.
 
-First in \_app.tsx, which normally is where we find common layout and components structures we can replace the entire file with:
+First in "\_app.tsx", which normally is where we find the common layout and components structures we can replace the entire file with:
 
 ```javascript
 import "../styles/globals.css";
@@ -207,11 +208,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default appWithTranslation(MyApp);
 ```
 
-We are essentially wrapping the entire application and enabling i18n internationalization features to be available everywhere.
+We are essentially wrapping the entire application and enabling i18n internationalization features to be available everywhere in the application.
 
-In our tutorial let's imagine that our data is static, meaning it won't change and doesn't need to be rebuilt every time the content is accessed. This will make it faster to access.
+In our tutorial let's imagine that our data is static, meaning it won't change and doesn't need to be rebuilt every time the content is accessed by the user. This will make it faster to access.
 
-In your main index.tsx file, which is the main entry point of your app:
+In your main "index.tsx" file, which is the main entry point of your app:
 
 ```javascript
 import { GetStaticPropsContext } from "next";
@@ -239,20 +240,18 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
 export default Index;
 ```
 
-The translation content from common.json for French and English language props will now be available to all our components found in the index. js
+The translation content from common.json for French and English language props will now be available to all our components found in the index. js through the use of...
 
-`const { t } = useTranslation("common");` provides translation functionality.
+`const { t } = useTranslation("common");` which provides translation functionality within the respective functional components.
 
 `getStaticProps` is using `serverSideTranslations` to preload translations at build time for better performance.
 
-Because we have two translation files we wil instead pass an array so both are accessible within our app.
+Because we have two translation files we will instead pass an array so both are accessible within our app.
 
 ```javascript
 import { GetStaticPropsContext } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
-
-import LanguageSelector from "../components/LanguageSelector/index";
 
 const Index = () => {
   const { t } = useTranslation("common");
@@ -275,21 +274,23 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
 export default Index;
 ```
 
-Ok, now let's see if it works.
+Okay, now let's see if it works.
 
 ```javascript
 npm run dev
 ```
 
-This is a default script found in package.json which compiles your app and does so continually as you make changes to the app without needing to restart the developer server for many changes.
+The above is a default script found in package.json which compiles your app and should do so continually as you make changes to the app without needing to restart the developer server for many changes.
 
 Check localhost:3000 and then localhost:3000/fr to make sure it's working. You can also change the language settings in your browser of choice to obtain the same results.
 
 So now we have the basics in place.
 
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1695746790174/7cbfe37a-b3dd-4a94-a61e-40079c21087c.png align="center")
+
 ### Organizing things...
 
-What if your web app is really large and you'd like more options to organize your translation files and would like to know how to access them?
+What if your web app is really large and you'd like more options to organize your translation files and would like to know how to access them in different ways?
 
 Let's look at some options. Let's expand our current directory and file structure to the following from the root:
 
@@ -305,7 +306,7 @@ components/
 
 Let's access the nested copyright property found in common.json and then let's access the translation file found in the sub-directory NestedDirectory.
 
-Modify \_index.tsx in the pages directory:
+Modify "\_index.tsx" in the pages directory:
 
 ```javascript
 import { GetStaticPropsContext } from "next";
@@ -338,7 +339,7 @@ export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
 export default Index;
 ```
 
-Add this to components/Copywright/index.tsx:
+Add this to "components/Copywright/index.tsx":
 
 ```javascript
 import { useTranslation } from "next-i18next";
@@ -357,7 +358,7 @@ export default Copywright;
 
 To access nested content in the translation file we simply access them as normal attributes from an object:
 
-"footer.copywright" using the `t` translation function to access nested attributes in our translation files.
+"footer.copywright" uses the `t` translation function to access nested attributes in our translation files.
 
 Modify components/NestedDirectory/index.tsx:
 
@@ -378,7 +379,32 @@ export default NestedDirectory;
 
 For sub-directories in our translation file directory, we'll use the syntax "directorynesting/other" in the `t` "function" parameter and server-side translation array found in index.tsx.
 
-We could have picked to have all our project files in an SRC directory when selecting the configuration settings of our next.js project while using create-next-app but we didn't :astonished: . Having all your project files in the SRC is a very common and popular way to organize your project files by separating project files and configuration files.
+What if we want to access 2 translation files in one component?
+
+Modify "components/NestedDirectory/index.tsx:"
+
+```javascript
+import { useTranslation } from "next-i18next";
+
+const NestedDirectory = () => {
+
+  const { t: commonT } = useTranslation("common");
+  const { t: directorynestingT } = useTranslation("directorynesting/other");
+  return (
+        <div>
+            <h1>{directorynestingT("nesteddirectory")}</h1>
+            <p>{commonT("helloworld")}</p>
+        </div>
+  );
+};
+export default NestedDirectory;
+```
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1695831154304/587e38b1-98e8-4f0f-8e07-546a359558fb.jpeg align="center")
+
+We could have picked to have all our project files in an SRC directory when selecting the configuration settings of our next.js project while using create-next-app but we didn't.
+
+Having all your project files in the SRC is a very common and popular way to organize your project files by separating project files and configuration files.
 
 First, create a `src` directory in your root project folder.
 
@@ -480,11 +506,10 @@ const LanguageSelector = () => {
   );
 };
 
-
 export default LanguageSelector;
 ```
 
-As mentioned before next.js has URL routing setup for internationalization built under the hood. To take advantage of URL routing we'll be using the useRouter hook which gives you access to the router object. You can use it to manage navigation and access route information.
+As mentioned before next.js has URL routing setup for internationalization built under the hood. To take advantage of URL routing we'll be using the "useRouter" hook which gives you access to the router object. You can use it to manage navigation and access route information.
 
 Let's break down the destructured variables and the function in the provided code:
 
@@ -521,7 +546,7 @@ Let's break down the destructured variables and the function in the provided cod
     * "en" or "fr" for this tutorial
         
 
-This React component allows users to select a language using a dropdown menu update the URL path accordingly and navigate to the chosen language.
+The React component we just created allows users to select a language using a dropdown menu that updates the URL path accordingly and navigates to the chosen language.
 
 You should now be able to select a language using the drop-down menu.
 
@@ -614,15 +639,17 @@ export default Index;
 
 Next.js will automatically recognize this as a new URL path.
 
+\[Linking and navigating\]([https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating](https://nextjs.org/docs/pages/building-your-application/routing/linking-and-navigating))
+
 \*\*http://localhost:3000/testing\*\*
 
-Now try changing the language to French using our newly created dropdown menu, and then click on the link to take us to the new route, change the language back to English, and then click on the link to take us back to the home menu. Notice the changes survive the transfers to the new pages.
+Now try changing the language to French using our newly created dropdown menu, and then click on the link to take us to the new route, change the language back to English, and then click on the link to take us back to the home menu. Notice the changes survive the navigating to new pages.
 
 From the home page change the language to French, now CTRL-C in your terminal and restart your app and restart your app from localhost:3000.
 
 You'll notice your language changes aren't persisting. To do that you'll have to save the changes to your browser.
 
-In this tutorial, we will be using local storage which allows web applications to store key-value pairs using a browser API.
+In this tutorial, we will be using \[local storage\]([https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)) which allows web applications to store key-value pairs using a browser API.
 
 Modify components/LanguageSelector/index.tsx:
 
@@ -671,31 +698,51 @@ Your code manages language selection for the web application by utilizing local 
 
 There are severe limitations to this implementation. Local storage will be specific to every browser & device you use. If you restart the app and use it on the same browser and device it will remember the selected language but not on other browsers & devices.
 
-So how do we solve this problem? First, you'll need to implement user authentication. The user's language selection will be stored in the back-end database. If you want this selection to only apply during the current session you can use sessionStorage instead of localStorage.
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1695833275160/e6ba07e3-f035-4e00-98db-6307067993c8.png align="center")
+
+So how do we solve this problem?
+
+First, you'll need to implement user authentication. The user's language selection will be stored in the back-end database. If you want this selection to only apply during the current session you can use sessionStorage instead of localStorage.
 
 This implementation will be covered in the upcoming part two of this blog!
 
-Before we end this tutorial, what self-respecting app doesn't have any tests and isn't deployed? Let's add some tests and then deploy the application!
+Before we end this tutorial, what self-respecting web application doesn't have any tests and isn't deployed? Let's add some tests and then deploy the application!
 
 ## Testings
 
 For this tutorial, we will be using \[Playwright\]([https://playwright.dev/](https://playwright.dev/)) for end-to-end testing.
 
-In terminal :
+Software end-to-end testing (E2E) simulates real user scenarios to test an application's functionality from start to finish. An end-to-end test ensures that all the components of an application work together and behave correctly in a production-like environment.
+
+I would also recommend installing the developer extension for VS Code so the tests a applied in your browser and can be observed visually in action.
+
+%[https://www.youtube.com/watch?v=Xz6lhEzgI5I&t=44s] 
 
 ```javascript
 npm init playwright
 ```
 
-Choose a directory where your test files will live, choose no for GitHub actions and finally yes to install/update playwright.
+Choose a directory where your test files will live, choose no for GitHub actions, and finally yes to install/update playwright.
 
 ```javascript
 npm init playwright
 Getting started with writing end-to-end tests with Playwright:
 Initializing project in '.'
-√ Where to put your end-to-end tests? · tests 
+√ Where to put your end-to-end tests? · e2e 
 √ Add a GitHub Actions workflow? (y/N) · false
 √ Install Playwright browsers (can be done manually via 'npx playwright install')? (Y/n) · true
+```
+
+Playwright will create the following files:
+
+```javascript
+playwright.config.ts
+package.json
+package-lock.json
+e2e/
+  example.spec.ts
+tests-examples/
+  demo-todo-app.spec.ts
 ```
 
 Update your package.json file:
@@ -707,14 +754,222 @@ Update your package.json file:
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:tests": "playwright test"
+    "test": "npx playwright test"
   },
-...
+```
+
+Let's start by creating 2 simple tests in "e2e/example.spec.ts" file:
+
+```javascript
+import { test, expect } from '@playwright/test';
+
+test('Check if the homepage loads and has the correct h1 text', async ({ page }) => {
+  await page.goto('http://localhost:3000'); 
+
+  const h1Element = await page.$('h1');
+
+  if(h1Element){
+    const h1Text = await h1Element.innerText();
+    expect(h1Text).toBe('Hello World!');
+  } else {
+    throw new Error('<h1> element not found on the page');
+  } 
+});
+
+test('Check if the homepage loads and has the correct h1 text in french', async ({ page }) => {
+  await page.goto('http://localhost:3000/fr'); 
+  
+  const h1Element = await page.$('h1');
+  
+  if (h1Element) {
+    const h1Text = await h1Element.innerText();
+    expect(h1Text).toBe('Salut monde!');
+  } else {
+    throw new Error('<h1> element not found on the page');
+  }
+});
+```
+
+In the terminal:
+
+```javascript
+npx run test
+
+npm run test
+
+> language-button@0.1.0 test
+> npx playwright test
+
+
+Running 2 tests using 2 workers
+  2 passed (5.0s)
+
+To open last HTML report run:
+
+  npx playwright show-report 
+```
+
+Okay, so we now have a basic test in place. Let's simulate a user language change using our language selector. Let's update the e2e/example.spec.ts:
+
+```javascript
+test('Check if language selector is working when language is currently English and you select the French language option', async ({ page }) => {
+  // Navigate to the English version of the homepage
+  await page.goto('http://localhost:3000/');
+
+  // Click on the dropdown to open it
+  await page.click('select#language-selector');
+
+  // Wait for the "French" option to become visible in the dropdown
+  await page.waitForSelector('select#language-selector option[value="fr"]',{ state: 'attached' });
+
+
+// Use a more specific selector for the select element
+  const selectElement = await page.$('select#language-selector');
+
+  if (selectElement) {
+    // Select the "French" option by its value
+    await selectElement.selectOption({ value: 'fr' });
+  } else {
+    throw new Error('Select element not found on the page');
+  }
+  // Wait for the navigation to complete to the French version of the page
+    await page.waitForNavigation();
+
+  // Check the URL to ensure it has changed to the French version
+  const currentURL = page.url();
+  expect(currentURL).toBe('http://localhost:3000/fr')
+
+  // Check the content to verify it's in French
+  const h1Element = await page.$('h1');
+  if (h1Element) {
+    const h1Text = await h1Element.innerText();
+    expect(h1Text).toBe('Salut Monde!');
+  } else {
+    throw new Error('<h1> element not found on the page');
+  }
+});
+
+test('Check if language selector is working when language is currently French and you select the ENglish language option', async ({ page }) => {
+  // Navigate to the English version of the homepage
+  await page.goto('http://localhost:3000/fr');
+
+  // Click on the dropdown to open it
+  await page.click('select#language-selector');
+
+  // Wait for the "French" option to become visible in the dropdown
+  await page.waitForSelector('select#language-selector option[value="en"]',{ state: 'attached' });
+
+
+// Use a more specific selector for the select element
+  const selectElement = await page.$('select#language-selector');
+
+  if (selectElement) {
+    // Select the "French" option by its value
+    await selectElement.selectOption({ value: 'en' });
+  } else {
+    throw new Error('Select element not found on the page');
+  }
+  // Wait for the navigation to complete to the French version of the page
+    await page.waitForNavigation();
+
+  // Check the URL to ensure it has changed to the French version
+  const currentURL = page.url();
+  expect(currentURL).toBe('http://localhost:3000/')
+
+  // Check the content to verify it's in French
+  const h1Element = await page.$('h1');
+  if (h1Element) {
+    const h1Text = await h1Element.innerText();
+    expect(h1Text).toBe('Hello World!');
+  } else {
+    throw new Error('<h1> element not found on the page');
+  }
+});
+```
+
+```javascript
+npm run test
+
+> language-button@0.1.0 test
+> npx playwright test       
+
+
+Running 4 tests using 2 workers
+  4 passed (9.1s)
+
+To open last HTML report run:
+
+  npx playwright show-report 
+
+PS C:\Users\kmb_x\Programming\next-i18next-blog> 
 ```
 
 ## Deploying
 
-Vercel
+Before beginning you'll need to set up your project with git and push the code to a GitHub repository.
+
+1. **Initialize a Git Repository**:
+    
+    * Open your terminal/command prompt.
+        
+    * Navigate to your project root directory.
+        
+    * Run the following command to initialize a new Git repository:
+        
+        ```javascript
+        git init
+        ```
+        
+2. **Add and Commit Your Project**:
+    
+    * Use the following commands to add your files and make an initial commit:
+        
+        ```javascript
+        git add .
+        git commit -m "Initial commit"
+        ```
+        
+3. **Create a Repository on GitHub**:
+    
+    * Go to the GitHub website ([**https://github.com**](https://github.com)).
+        
+    * Log in to your GitHub account.
+        
+    * Click on the "+" sign in the top right corner and select "New Repository."
+        
+    * Fill in the repository name, description, and other settings.
+        
+    * Click on the "Create repository" button.
+        
+4. **Link Your Local Repository to the GitHub Repository**:
+    
+    * On the GitHub repository page, you will see instructions for pushing an existing repository from the command line. It should look something like this:
+        
+        ```javascript
+        cssCopy codegit remote add origin <repository_url>
+        git branch -M main
+        git push -u origin main
+        ```
+        
+    * Copy and paste these commands into your terminal, replacing `<repository_url>` with the URL of your GitHub repository. This links your local repository to the remote GitHub repository.
+        
+5. **Push Your Code to GitHub**:
+    
+    * After setting the remote, push your code to GitHub by running:
+        
+        ```javascript
+        cssCopy codegit push -u origin main
+        ```
+        
+    
+    This command pushes your code to the GitHub repository's `main` branch.
+    
+6. **Verify on GitHub**:
+    
+    * Visit your GitHub repository in a web browser to confirm that your code has been successfully pushed.
+        
+
+Your project is now on GitHub, and you
 
 ## Troubleshooting
 
@@ -754,6 +1009,8 @@ Common errors, screens shots
         
     * Tips for maintaining and updating your Next.js blog with i18n.
         
+3. **Troubleshooting and Tips:**
+    
 
 [https://www.freecodecamp.org/news/technical-blogging-basics/](https://www.freecodecamp.org/news/technical-blogging-basics/)
 
