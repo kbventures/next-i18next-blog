@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
-import useToggle from "../../hooks/useToggle";
 import { ChangeEvent } from "react";
+import { useTranslation } from "next-i18next";
 
 const LanguageSelector = () => {
   const { pathname, push, route, asPath, locale } = useRouter();
-  const [isOpen, toggle] = useToggle();
 
   const handleLocaleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -14,13 +13,13 @@ const LanguageSelector = () => {
     });
   };
 
+  const { t } = useTranslation("common");
   return (
         <div>
             <h2>Language Selector</h2>
-            <p>Select a language:</p>
             <select value={locale} onChange={handleLocaleChange}>
-               <option value="en">English</option>
-               <option value="fr">French</option>
+               <option value="en">{t("english")}</option>
+               <option value="fr">{t("french")}</option>
              </select>
         </div>
   );
