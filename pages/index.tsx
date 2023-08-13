@@ -4,6 +4,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
 import LanguageSelector from "../components/LanguageSelector/index";
+import Copywright from "../components/Copywright";
+import NestedDirectory from "../components/NestedDirectory";
 
 const Index = () => {
   const { t } = useTranslation("common");
@@ -12,6 +14,8 @@ const Index = () => {
     <div>
         <h1>{t("helloworld")}</h1>
         <LanguageSelector />
+        <NestedDirectory/>
+        <Copywright/>
     </div>
   );
 };
@@ -19,7 +23,7 @@ const Index = () => {
 export const getStaticProps = async ({ locale }: GetStaticPropsContext) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale as string, ["common"])),
+      ...(await serverSideTranslations(locale as string, ["common","language-selector","directorynesting/other"])),
     },
   };
 };

@@ -1,5 +1,6 @@
 {
     "helloworld": "Salut monde!",
-    "english":"Anglais",
-    "french":"Francais"
+    "footer":{
+      "copywright":"Droits d'auteur"
+    }
   }

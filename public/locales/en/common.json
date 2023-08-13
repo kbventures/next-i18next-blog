@@ -1,6 +1,7 @@
 {
     "helloworld": "Hello World!",
-    "english": "English",
-    "french":"French"
+    "footer":{
+      "copywright":"Copywright"
+    }
   }
   
