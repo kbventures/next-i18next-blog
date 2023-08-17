@@ -2,6 +2,8 @@
     "helloworld": "Hello World!",
     "footer":{
       "copywright":"Copywright"
-    }
+    },
+    "newroute":"New route",
+    "homepage":"Home Page"
   }
   

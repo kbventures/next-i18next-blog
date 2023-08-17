@@ -2,5 +2,7 @@
     "helloworld": "Salut monde!",
     "footer":{
       "copywright":"Droits d'auteur"
-    }
+    },
+    "newroute":"Nouvelle Route",
+    "homepage":"Page d'accueil"
   }

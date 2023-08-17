@@ -7,6 +7,8 @@ import LanguageSelector from "../components/LanguageSelector/index";
 import Copywright from "../components/Copywright";
 import NestedDirectory from "../components/NestedDirectory";
 
+import Link from "next/link"
+
 const Index = () => {
   const { t } = useTranslation("common");
 
@@ -16,6 +18,7 @@ const Index = () => {
         <LanguageSelector />
         <NestedDirectory/>
         <Copywright/>
+        <Link href="/testingroute">{t("newroute")}</Link>
     </div>
   );
 };
