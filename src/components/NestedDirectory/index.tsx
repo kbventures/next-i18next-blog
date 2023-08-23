@@ -10,5 +10,4 @@ const NestedDirectory = () => {
   );
 };
 
-
 export default NestedDirectory;
