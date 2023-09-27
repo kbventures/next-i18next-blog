@@ -1,0 +1,21 @@
+Add this  content to blog 
+
+// components/MyComponent.js
+
+import React from "react";
+import { useTranslation } from "react-i18next";
+
+function MyComponent() {
+  // Load translations for both namespaces
+  const { t: commonT } = useTranslation("common");
+  const { t: myComponentT } = useTranslation("myComponent");
+
+  return (
+    <div>
+      <h1>{commonT("hello")}</h1>
+      <h2>{myComponentT("greeting")}</h2>
+    </div>
+  );
+}
+
+export default MyComponent;
