@@ -15,6 +15,7 @@ const Index = () => {
   return (
     <div>
         <h1>{t("helloworld")}</h1>
+        {/* <h1>Hello world!</h1> */}
         <LanguageSelector />
         <NestedDirectory/>
         <Copywright/>

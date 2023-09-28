@@ -1,8 +1,8 @@
 {
-    "helloworld": "Salut monde!",
+    "helloworld": "Salut Monde!",
     "footer":{
       "copywright":"Droits d'auteur"
     },
-    "newroute":"Nouvelle Route",
+    "newroute":"Itinéraire de test",
     "homepage":"Page d'accueil"
   }
