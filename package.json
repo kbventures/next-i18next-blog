@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:tests": "playwright test"
+    "test": "npx playwright test"
   },
   "dependencies": {
     "@types/node": "20.4.9",

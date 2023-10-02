@@ -30,7 +30,7 @@ const LanguageSelector = () => {
   return (
         <div>
             <h2>{t("languageselector")}</h2>
-            <select value={locale} onChange={handleLocaleChange}>
+            <select id="language-selector" value={locale} onChange={handleLocaleChange}>
                <option value="en">{t("english")}</option>
                <option value="fr">{t("french")}</option>
             </select>

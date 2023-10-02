@@ -22,7 +22,7 @@ test('Check if the homepage loads and has the correct h1 text in french', async 
   if (h1Element) {
     const h1Text = await h1Element.innerText();
     
-    expect(h1Text).toBe('Salut monde!');
+    expect(h1Text).toBe('Salut Monde!');
   } else {
     throw new Error('<h1> element not found on the page');
   }
