@@ -806,7 +806,7 @@ Running 2 tests using 2 workers
 
 To open last HTML report run:
 
-  npx playwright show-report 
+  npx playwright show-report
 ```
 
 Okay, so we now have a basic test in place. Let's simulate a user language change using our language selector. Let's update the e2e/example.spec.ts:
@@ -901,12 +901,22 @@ To open last HTML report run:
 
   npx playwright show-report 
 
-PS C:\Users\kmb_x\Programming\next-i18next-blog> 
+PS C:\Users\kmb_x\Programming\next-i18next-blog>
 ```
 
-## Deploying
+Tada! :)
 
-Before beginning you'll need to set up your project with git and push the code to a GitHub repository.
+## Deploying ... Maybe?
+
+Before deploying you'll need to set up your project with Git and push the code to a GitHub repository.
+
+"Git is a widely employed distributed version control system utilized in software development for the management and monitoring of alterations in source code, documents, and additional files."
+
+A guide to installing Git:
+
+\[Git\]([https://git-scm.com/book/en/v2/Getting-Started-Installing-Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git))
+
+Then...
 
 1. **Initialize a Git Repository**:
     
@@ -933,7 +943,7 @@ Before beginning you'll need to set up your project with git and push the code t
     
     * Go to the GitHub website ([**https://github.com**](https://github.com)).
         
-    * Log in to your GitHub account.
+    * Sign up or log in to your GitHub account.
         
     * Click on the "+" sign in the top right corner and select "New Repository."
         
@@ -946,7 +956,7 @@ Before beginning you'll need to set up your project with git and push the code t
     * On the GitHub repository page, you will see instructions for pushing an existing repository from the command line. It should look something like this:
         
         ```javascript
-        cssCopy codegit remote add origin <repository_url>
+        git remote add origin <repository_url>
         git branch -M main
         git push -u origin main
         ```
@@ -958,7 +968,7 @@ Before beginning you'll need to set up your project with git and push the code t
     * After setting the remote, push your code to GitHub by running:
         
         ```javascript
-        cssCopy codegit push -u origin main
+        git push -u origin main
         ```
         
     
@@ -969,11 +979,35 @@ Before beginning you'll need to set up your project with git and push the code t
     * Visit your GitHub repository in a web browser to confirm that your code has been successfully pushed.
         
 
-Your project is now on GitHub, and you
+Your project is now on GitHub!
 
-## Troubleshooting
+Ok back to vercel!
 
-Common errors, screens shots
+## Deploying!
+
+You can log in or signup @ \[Vercel\]([https://vercel.com/dashboard](https://vercel.com/dashboard))
+
+You will need to connect to a Git provider. If you followed the steps in regard to Git and GitHub earlier you can choose that account.
+
+"Vercel is a popular cloud platform for deploying web applications and websites, with a strong focus on hosting modern frontend projects like React, Next.js, and Vue.js. It provides developers with a flexible and streamlined infrastructure for quick and easy web project deployment."
+
+Click on "Add New Project":
+
+Input your GitHub repository name in the search tab.
+
+Click on the "Import" button.
+
+Click on the "Deploy" button.
+
+Once all the deployment steps are completed:
+
+![](https://cdn.hashnode.com/res/hashnode/image/upload/v1696536604709/f084fb68-9b68-44ac-a605-803500d10928.png align="center")
+
+Click on "Continue to Dashboard"
+
+Click on "Visit"
+
+Your project is now deployed and available for showing to anyone using the URL in the browser.
 
 ## Summary
 
@@ -993,7 +1027,15 @@ Common errors, screens shots
 
 \[Next.js + Playwright installation\]([https://nextjs.org/docs/pages/building-your-application/optimizing/testing#playwright](https://nextjs.org/docs/pages/building-your-application/optimizing/testing#playwright))
 
+\[Git\]([https://git-scm.com/](https://git-scm.com/))
+
+\[Github\]([https://github.com/](https://github.com/))
+
+\[Vercel\]([https://vercel.com/](https://vercel.com/))
+
 ## Special mentions & credits
+
+\[Dmitry Khulakov\]([https://dmitrykulakov.vercel.app/](https://dmitrykulakov.vercel.app/)) Proofreading, Testing and Technical Input
 
 1. **Additional Features and Best Practices:**
     
@@ -1003,14 +1045,6 @@ Common errors, screens shots
         
     * Consideration of accessibility (a11y) practices to ensure an inclusive experience for all users.
         
-2. **Troubleshooting and Tips:**
-    
-    * Common challenges you might encounter during development and how to overcome them.
-        
-    * Tips for maintaining and updating your Next.js blog with i18n.
-        
-3. **Troubleshooting and Tips:**
-    
 
 [https://www.freecodecamp.org/news/technical-blogging-basics/](https://www.freecodecamp.org/news/technical-blogging-basics/)
 
@@ -1041,8 +1075,3 @@ Next-i18next is a popular internationalization (i18n) library for Next.js applic
 12. **Cross-Browser Tests:** Test your i18n features across different browsers to ensure compatibility and consistent behavior.
     
 13. **Accessibility (a11y) Tests:** Verify that language changes do not introduce accessibility issues, such as broken focus or navigation.
-    
-14. **Automated End-to-End Tests:** Consider setting up automated end-to-end tests using testing frameworks like Cypress or Selenium. These tests can simulate user interactions and verify i18n behavior across different scenarios.
-    
-
-Remember that i18n testing should be an ongoing process as you make updates to your app. Automate these tests where possible to ensure consistent quality as your app evolves.
